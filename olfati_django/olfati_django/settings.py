@@ -65,7 +65,6 @@ INSTALLED_APPS = [
     'accounts',
     'exam',
     "core",
-    "litner",
     "markethub",
     "django_celery_results",
     'django_celery_beat',

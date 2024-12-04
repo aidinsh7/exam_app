@@ -4,7 +4,6 @@ from django import forms
 
 from accounts.models import OtpModel, UserModel
 from exam.models import ExamModel, QuestionModel, ChoiceModel, KarNameModel, KarNameDBModel, MyExamClass
-from litner.models import LitnerModel, LitnerQuestionModel, LitnerKarNameModel, MyLitnerclass, LitnerKarNameDBModel,LitnerAnswer,UserQuestionAnswerCount
 from markethub.models import MarketHubModel, MarketHubQuestionModel, MarketHubKarNameModel, MarketHubKarNameDBModel, \
     Myclass
 
@@ -21,23 +20,6 @@ class UserAdmin(admin.ModelAdmin):
         ('گزارش تاریخ', {'fields': ('last_login', 'date_joined')}),
     )
 
-    
-@admin.register(LitnerModel)
-class UserAdmin(admin.ModelAdmin):
-    pass
-
-
-@admin.register(LitnerAnswer)
-class UserAdmin(admin.ModelAdmin):
-    pass
-
-@admin.register(LitnerQuestionModel)
-class UserAdmin(admin.ModelAdmin):
-    pass
-
-@admin.register(UserQuestionAnswerCount)
-class UserQuestionAnswerCountAdmin(admin.ModelAdmin):
-    pass
 
 
 @admin.register(MarketHubModel)
@@ -49,10 +31,6 @@ class UserAdmin(admin.ModelAdmin):
 class UserAdmin(admin.ModelAdmin):
     pass
 
-
-@admin.register(LitnerKarNameModel)
-class UserAdmin(admin.ModelAdmin):
-    pass
 
 
 @admin.register(ExamModel)
@@ -108,21 +86,6 @@ class MarketHubKarNameDBModelAdmin(admin.ModelAdmin):
     pass
 
 
-class MyLitnerclassAdminForm(forms.ModelForm):
-    class Meta:
-        model = MyLitnerclass
-        fields = '__all__'
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        # Filter the queryset for the 'author' field to show only staff users
-        self.fields['author'].queryset = UserModel.objects.filter(is_staff=True)
-
-# class UserAdmin(admin.ModelAdmin):
-@admin.register(MyLitnerclass)
-class MyLitnerclassAdmin(admin.ModelAdmin):
-    form = MyLitnerclassAdminForm
-
 
 class MyExamClassAdminForm(forms.ModelForm):
     class Meta:
@@ -145,6 +108,4 @@ class MyclassAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(LitnerKarNameDBModel)
-class LitnerKarNameDBModelAdmin(admin.ModelAdmin):
-    pass
+
