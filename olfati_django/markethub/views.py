@@ -19,15 +19,8 @@ import requests
 import json
 #part1 source ___________________________________________________________________________________________________________________
 
-permission_error = Response({'اجازه این کار را ندارید.'}, status.HTTP_403_FORBIDDEN)
+permission_error = Response({'you dont have access'}, status.HTTP_403_FORBIDDEN)
 
-
-# ساخت کلاس 
-# ورودی ها : 
-# title 
-# description
-# cover image 
-# price
 class ListCreateMyClassView(ModelViewSet):
     permission_classes = [IsAuthenticated,]
     serializer_class = MyClassSerializer
@@ -271,10 +264,6 @@ class MakeQuestionView(ModelViewSet):
 ZP_API_REQUEST = "https://api.zarinpal.com/pg/rest/WebGate/PaymentRequest.json"
 ZP_API_VERIFY = "https://api.zarinpal.com/pg/rest/WebGate/PaymentVerification.json"
 ZP_API_STARTPAY = "https://api.zarinpal.com/pg/StartPay/"
-# ZP_API_REQUEST = f"https://{sandbox}.zarinpal.com/pg/rest/WebGate/PaymentRequest.json"
-# ZP_API_VERIFY = f"https://{sandbox}.zarinpal.com/pg/rest/WebGate/PaymentVerification.json"
-# ZP_API_STARTPAY = f"https://{sandbox}.zarinpal.com/pg/StartPay/"
-
 
 def send_request(request):
     amount = 1000  # Rial / Required

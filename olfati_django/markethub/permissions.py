@@ -2,7 +2,7 @@ from rest_framework.permissions import BasePermission, SAFE_METHODS, IsAuthentic
 
 
 
-# پرمیشن برای سوپر یوزر
+
 class IsSuperUserOrStaff(BasePermission):
     def has_permission(self, request, view):
         return bool(request.method in SAFE_METHODS and
@@ -11,8 +11,6 @@ class IsSuperUserOrStaff(BasePermission):
                     request.user and
                     request.user.is_superuser)
 
-
-# پرمیشن برای چک کردن احراز هویت کاربر
 class IsAuthenticated(BasePermission):
     def has_permission(self, request, view):
         if request.method in SAFE_METHODS:

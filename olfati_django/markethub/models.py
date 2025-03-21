@@ -19,7 +19,7 @@ class MarketHubModel(models.Model):
         verbose_name = 'فصل'
         verbose_name_plural = 'فصل ها'
     
-    title = models.CharField(max_length=100,verbose_name='عنوان فصل')
+    title = models.CharField(db_index=True,max_length=100,verbose_name='عنوان فصل')
     description = models.CharField(max_length=100,verbose_name='توضیحات فصل برای خرید')
     cover_image = models.ImageField(upload_to='media/markethub_image_cover/', null=True,verbose_name='عکس کاور')
     price = models.SmallIntegerField(verbose_name='قیمیت فصل')

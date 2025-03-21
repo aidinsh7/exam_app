@@ -2,7 +2,6 @@ import codecs
 from random import randint
 from sqlite3 import IntegrityError
 from django.contrib.auth.models import Group
-
 from kavenegar import KavenegarAPI
 from rest_framework import status
 from rest_framework.response import Response
@@ -15,7 +14,7 @@ from .serializer import OtpSerializers, UserSerializers
 
 
 class UserView(APIView):
-    # permission_classes = [IsAuthenticated]
+ 
     def post(self, request):
         serializer = UserSerializers(data=request.data)
         if serializer.is_valid():
